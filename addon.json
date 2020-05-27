@@ -1,0 +1,6 @@
+{
+    "id": "motd",
+    "name": "DiscordMOTD",
+    "author": "Sheidy",
+    "main": "src/DiscordMOTD.js"
+}

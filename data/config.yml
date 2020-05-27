@@ -1,0 +1,22 @@
+# DiscordMOTD by Sheidy - OopsieWoopsie
+
+# Available placeholders:
+# {online_count}
+# {online_max}
+# {random_player}
+
+playing:
+  - "{online_count}/{online_max} players!"
+  - "join.myserver.net"
+  - "with {random_player}!"
+listening:
+  - "the chickens"
+  - "the cows"
+watching:
+  - "{online_count} players!"
+  - "the stone generator"
+
+# The status interval is in seconds,
+# use a number bigger than 30
+# or discord may not show the status!
+status-interval: 30
