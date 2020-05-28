@@ -2,5 +2,6 @@
     "id": "motd",
     "name": "DiscordMOTD",
     "author": "Sheidy",
+    "version": "1.0",
     "main": "src/DiscordMOTD.js"
 }
