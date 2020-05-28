@@ -27,14 +27,10 @@ function getRandomPlayer() {
     var players = server.getOnlinePlayers()
     var len = players.length
     if (len !== 0) {
-        var x = Math.floor((Math.random() * plen))
+        var x = Math.floor((Math.random() * len))
         return players[x]
     }
     return 'Sheidy' // when there are no players online... im in
-}
-
-function jstring(str) {
-    return new java.lang.String(str)
 }
 
 module.exports = Status
