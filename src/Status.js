@@ -1,5 +1,5 @@
 const server = require('server')
-const Game = net.dv8tion.jda.core.entities.Game
+const Game = net.dv8tion.jda.api.entities.Game
 const GameType = Game.GameType
 
 function Status(type, text) {
