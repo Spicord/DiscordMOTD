@@ -6,7 +6,7 @@ function StatusChanger(presence) {
 
 StatusChanger.prototype = {
     apply: function(game) {
-        this.presence.setGame(game)
+        this.presence.setActivity(game)
     },
     build: function(obj) {
         var arr = []
