@@ -1,6 +1,6 @@
 const server = require('server')
-const Game = net.dv8tion.jda.api.entities.Game
-const GameType = Game.GameType
+const Activity = net.dv8tion.jda.api.entities.Activity
+const ActivityType = Activity.ActivityType
 
 function Status(type, text) {
     this.type = type
@@ -12,7 +12,7 @@ Status.prototype = {
         return new Status(this.type, this.text)
     },
     build: function build() {
-        return Game.of(GameType.valueOf(this.type), buildText(this.text))
+        return Activity.of(ActivityType.valueOf(this.type), buildText(this.text))
     }
 }
 
