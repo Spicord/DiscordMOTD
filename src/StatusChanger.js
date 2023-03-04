@@ -16,8 +16,8 @@ StatusChanger.prototype = {
 
         if (playing) {
             for (var i = 0; i < playing.length; i++) {
-                var text = playing[i]
-                arr.push(new Status('DEFAULT', text))
+                var text = playing[i];
+                arr.push(new Status('PLAYING', text))
             }
         }
 
