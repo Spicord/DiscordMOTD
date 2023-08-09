@@ -1,12 +1,23 @@
 var Status = require('./Status')
 
-function StatusChanger(presence) {
-    this.presence = presence
+function StatusChanger(bot) {
+    this.bot = bot
 }
 
 StatusChanger.prototype = {
-    apply: function(game) {
-        this.presence.setActivity(game)
+    apply: function(status) {
+        var presence = this.bot.getPresence();
+
+        if (status.playing) {
+            presence.setPlaying(status.build());
+        }
+        if (status.listening) {
+            presence.setListening(status.build());
+        }
+        if (status.watching) {
+            presence.setWatching(status.build());
+        }
+
     },
     build: function(obj) {
         var arr = []
@@ -17,21 +28,27 @@ StatusChanger.prototype = {
         if (playing) {
             for (var i = 0; i < playing.length; i++) {
                 var text = playing[i];
-                arr.push(new Status('PLAYING', text))
+                var s = new Status(text);
+                s.playing = true;
+                arr.push(s);
             }
         }
 
         if (listening) {
             for (var i = 0; i < listening.length; i++) {
                 var text = listening[i];
-                arr.push(new Status('LISTENING', text))
+                var s = new Status(text);
+                s.listening = true;
+                arr.push(s);
             }
         }
 
         if (watching) {
             for (var i = 0; i < watching.length; i++) {
                 var text = watching[i];
-                arr.push(new Status('WATCHING', text))
+                var s = new Status(text);
+                s.watching = true;
+                arr.push(s);
             }
         }
 
@@ -39,6 +56,4 @@ StatusChanger.prototype = {
     }
 }
 
-module.exports = function(jda) {
-    return new StatusChanger(jda.getPresence())
-}
+module.exports = StatusChanger
