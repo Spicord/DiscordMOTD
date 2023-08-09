@@ -22,7 +22,7 @@ var status = {}
 var statuses = []
 
 addon.on('ready', bot => {
-    status = StatusChanger(bot.getJda())
+    status = new StatusChanger(bot)
     statuses = status.build({
         playing: playing,
         listening: listening,
@@ -35,7 +35,7 @@ var currentStatus = 0
 
 function next() {
     if (currentStatus < statuses.length) {
-        status.apply(statuses[currentStatus].build())
+        status.apply(statuses[currentStatus])
         currentStatus++
     } else {
         currentStatus = 0

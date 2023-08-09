@@ -1,18 +1,12 @@
 const server = require('server')
-const Activity = net.dv8tion.jda.api.entities.Activity
-const ActivityType = Activity.ActivityType
 
-function Status(type, text) {
-    this.type = type
+function Status(text) {
     this.text = text
 }
 
 Status.prototype = {
-    clone: function clone() {
-        return new Status(this.type, this.text)
-    },
     build: function build() {
-        return Activity.of(ActivityType.valueOf(this.type), buildText(this.text))
+        return buildText(this.text)
     }
 }
 
