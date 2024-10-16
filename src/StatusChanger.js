@@ -29,13 +29,16 @@ StatusChanger.prototype = {
 
     },
     build: function(obj) {
-        let arr = []
+        var arr = [];
 
-        function registerStatuses(arr, type) {
-            if (arr) for (let text of arr) {
-                var s = new Status(text);
-                s[type] = true;
-                arr.push(s);
+        function registerStatuses(statusesArr, type) {
+            if (statusesArr) {
+                for (var i = 0; i < statusesArr.length; i++) {
+                    var text = statusesArr[i];
+                    var s = new Status(text);
+                    s[type] = true;
+                    arr.push(s);
+                }
             }
         }
 

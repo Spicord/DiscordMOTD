@@ -17,7 +17,7 @@ const StatusChanger = require('./StatusChanger');
 var status = {}
 var statuses = []
 
-let theBot;
+var theBot = null;
 
 addon.on('ready', bot => {
     theBot = bot;
