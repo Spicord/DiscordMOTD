@@ -17,8 +17,11 @@ const StatusChanger = require('./StatusChanger');
 var status = {}
 var statuses = []
 
+let theBot;
+
 addon.on('ready', bot => {
-    status = new StatusChanger(bot)
+    theBot = bot;
+    status = new StatusChanger(bot);
     statuses = status.build({
         playing: conf.playing,
         listening: conf.listening,
@@ -26,13 +29,26 @@ addon.on('ready', bot => {
         streaming: conf.streaming,
         competing: conf.competing,
         custom: conf.custom
-    })
-    start()
+    });
+    start();
 })
 
 var currentStatus = 0
 
 function next() {
+    if (conf.status == "dnd") {
+        theBot.getPresence().setDoNotDisturb();
+    }
+    if (conf.status == "online") {
+        theBot.getPresence().setOnline();
+    }
+    if (conf.status == "idle") {
+        theBot.getPresence().setIdle();
+    }
+    if (conf.status == "invisible") {
+        theBot.getPresence().setInvisible();
+    }
+
     if (currentStatus < statuses.length) {
         status.apply(statuses[currentStatus])
         currentStatus++

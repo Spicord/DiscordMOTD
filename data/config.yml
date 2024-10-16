@@ -23,6 +23,10 @@ custom:
   - "join.myserver.net"
 
 
+## Possible values: invisible, online, dnd, idle
+status: "dnd"
+
+
 # The status interval is in seconds,
 # use a number bigger than 30
 # or discord may not show the status!
