@@ -1,2 +1,3 @@
 #!/bin/bash
-zip -r DiscordMOTD.sp $(ls -1)
+rm -f DiscordMOTD.sp
+zip -r DiscordMOTD.sp src/ data/ addon.json
