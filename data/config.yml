@@ -1,4 +1,4 @@
-# DiscordMOTD by Sheidy - OopsieWoopsie
+# DiscordMOTD
 
 # Available placeholders:
 # {online_count}
@@ -15,6 +15,13 @@ listening:
 watching:
   - "{online_count} players!"
   - "the stone generator"
+streaming:
+  - "join.myserver.net"
+competing:
+  - "join.myserver.net"
+custom:
+  - "join.myserver.net"
+
 
 # The status interval is in seconds,
 # use a number bigger than 30

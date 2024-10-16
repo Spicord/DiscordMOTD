@@ -7,10 +7,6 @@ const configPath = path.join(__data, 'config.yml')
 const config     = yaml.load(configPath)
 const conf       = JSON.parse(config.toString())
 
-var playing   = conf.playing
-var listening = conf.listening
-var watching  = conf.watching
-
 var interval = conf['status-interval']
 
 //var print = (a) => java.lang.System.out.println(a)
@@ -24,9 +20,12 @@ var statuses = []
 addon.on('ready', bot => {
     status = new StatusChanger(bot)
     statuses = status.build({
-        playing: playing,
-        listening: listening,
-        watching: watching
+        playing: conf.playing,
+        listening: conf.listening,
+        watching: conf.watching,
+        streaming: conf.streaming,
+        competing: conf.competing,
+        custom: conf.custom
     })
     start()
 })

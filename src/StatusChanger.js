@@ -17,40 +17,34 @@ StatusChanger.prototype = {
         if (status.watching) {
             presence.setWatching(status.build());
         }
+        if (status.streaming) {
+            presence.setStreaming(status.build());
+        }
+        if (status.competing) {
+            presence.setCompeting(status.build());
+        }
+        if (status.custom) {
+            presence.setCustom(status.build());
+        }
 
     },
     build: function(obj) {
-        var arr = []
-        var playing = obj.playing
-        var listening = obj.listening
-        var watching = obj.watching
+        let arr = []
 
-        if (playing) {
-            for (var i = 0; i < playing.length; i++) {
-                var text = playing[i];
+        function registerStatuses(arr, type) {
+            if (arr) for (let text of arr) {
                 var s = new Status(text);
-                s.playing = true;
+                s[type] = true;
                 arr.push(s);
             }
         }
 
-        if (listening) {
-            for (var i = 0; i < listening.length; i++) {
-                var text = listening[i];
-                var s = new Status(text);
-                s.listening = true;
-                arr.push(s);
-            }
-        }
-
-        if (watching) {
-            for (var i = 0; i < watching.length; i++) {
-                var text = watching[i];
-                var s = new Status(text);
-                s.watching = true;
-                arr.push(s);
-            }
-        }
+        registerStatuses(obj.playing, 'playing');
+        registerStatuses(obj.listening, 'listening');
+        registerStatuses(obj.watching, 'watching');
+        registerStatuses(obj.streaming, 'streaming');
+        registerStatuses(obj.competing, 'competing');
+        registerStatuses(obj.custom, 'custom');
 
         return arr;
     }
